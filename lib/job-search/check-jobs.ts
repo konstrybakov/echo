@@ -11,10 +11,10 @@ export const checkJobs = async () => {
   log.info('Checking jobs')
 
   const companies = [
-    // duckDuckGoChain,
-    // pragmaticEngineerChain,
-    // bufferChain,
-    // zapierChain,
+    duckDuckGoChain,
+    pragmaticEngineerChain,
+    bufferChain,
+    zapierChain,
     memoriselyChain
   ]
 
