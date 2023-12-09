@@ -15,5 +15,5 @@ if (mode === 'server') {
 }
 
 if (mode === 'cron') {
-  Deno.cron('Check jobs', '*/15 * * * *', checkJobs)
+  Deno.cron('Check jobs', '0 10 * * *', checkJobs)
 }
