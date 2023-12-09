@@ -1,13 +1,23 @@
-import { launch } from 'astral'
+import { LaunchOptions, launch } from 'astral'
 
 export const pageHTMLReader = async (
   url: string,
   waitForFunction: () => Promise<boolean>,
   parentSelector = 'body'
 ): Promise<string> => {
-  const browser = await launch({
-    headless: true
-  })
+  const useBrowserless = Deno.env.get('BROWSERLESS_MODE') === 'true'
+
+  const options: LaunchOptions = useBrowserless
+    ? {
+        wsEndpoint: `wss://chrome.browserless.io?token=${Deno.env.get(
+          'BROWSERLESS_API_KEY'
+        )}`
+      }
+    : {
+        headless: true
+      }
+
+  const browser = await launch(options)
 
   const page = await browser.newPage()
 

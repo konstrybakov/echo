@@ -3,7 +3,7 @@
     "project": "a503b054-28af-445b-a16d-14ecb4a2e199",
     "exclude": [],
     "include": [],
-    "entrypoint": "server.ts"
+    "entrypoint": "main.ts"
   },
   "imports": {
     "grammy": "https://deno.land/x/grammy@v1.19.2/mod.ts",
@@ -18,7 +18,7 @@
     "rss": "https://deno.land/x/rss@1.0.0/mod.ts"
   },
   "tasks": {
-    "run": "deno run --unstable --allow-net --allow-read --allow-run --allow-env --allow-write --watch server.ts"
+    "run": "deno run --unstable --allow-net --allow-read --allow-run --allow-env --allow-write --watch main.ts"
   },
   "compilerOptions": {
     "lib": ["deno.window", "dom"]
