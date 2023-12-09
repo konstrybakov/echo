@@ -1,9 +1,9 @@
 import { parseFeed } from 'rss'
 
-export const RSSReader = async (url: string): Promise<string> => {
+export const RSSReader = async (url: string): Promise<Record<string, unknown>[]> => {
   const response = await fetch(url)
   const text = await response.text()
   const feed = await parseFeed(text)
 
-  return JSON.stringify(feed, null, 2)
+  return feed.entries as unknown as Record<string, unknown>[]
 }

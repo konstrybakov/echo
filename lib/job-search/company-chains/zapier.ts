@@ -1,16 +1,17 @@
-import { log } from '../../log.ts'
-import { jobsToJSON } from '../llm/jobs-to-json-chain.ts'
-import { RSSReader } from '../readers/rss-reader.ts'
-import { CompanyData } from '../types.ts'
+import { log } from '~/log.ts'
+import { jobsToJSON } from '~/job-search/llm/jobs-to-json-chain.ts'
+import { RSSReader } from '~/job-search/readers/rss-reader.ts'
+import { pickProperties } from '~/job-search/transformers/pick-properties.ts'
+import { CompanyData } from '~/job-search/types.ts'
 
 const COMPANY_NAME = 'Zapier'
 const JOBS_URL = 'https://zapier.com/jobs/feeds/latest/'
 
 export const zapierChain = async (): Promise<CompanyData> => {
   try {
-    const text = await RSSReader(JOBS_URL)
-
-    const jobs = await jobsToJSON(text)
+    const jobsEntries = await RSSReader(JOBS_URL)
+    const jobsJson = pickProperties(jobsEntries, ['title', 'links'])
+    const jobs = await jobsToJSON(JSON.stringify(jobsJson, null, 2))
 
     return {
       success: true,

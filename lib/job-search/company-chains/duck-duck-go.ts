@@ -1,8 +1,7 @@
-import N from 'https://esm.sh/v135/base64-js@1.5.1/denonext/base64-js.mjs'
-import { log } from '../../log.ts'
-import { CompanyData } from '../types.ts'
-import { pickProperties } from '../transformers/pick-properties.ts'
-import { jobsToJSON } from '../llm/jobs-to-json-chain.ts'
+import { log } from '~/log.ts'
+import { CompanyData } from '~/job-search/types.ts'
+import { pickProperties } from '~/job-search/transformers/pick-properties.ts'
+import { jobsToJSON } from '~/job-search/llm/jobs-to-json-chain.ts'
 
 const COMPANY_NAME = 'DuckDuckGo'
 const JOBS_URL = 'https://duckduckgo.com/jobs.js'
