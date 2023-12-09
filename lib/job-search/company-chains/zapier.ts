@@ -4,11 +4,11 @@ import { RSSReader } from '../readers/rss-reader.ts'
 import { CompanyData } from '../types.ts'
 
 const COMPANY_NAME = 'Zapier'
-const RSS_URL = 'https://zapier.com/jobs/feeds/latest/'
+const JOBS_URL = 'https://zapier.com/jobs/feeds/latest/'
 
 export const zapierChain = async (): Promise<CompanyData> => {
   try {
-    const text = await RSSReader(RSS_URL)
+    const text = await RSSReader(JOBS_URL)
 
     const jobs = await jobsToJSON(text)
 
