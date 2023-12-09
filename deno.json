@@ -1,0 +1,26 @@
+{
+  "deploy": {
+    "project": "a503b054-28af-445b-a16d-14ecb4a2e199",
+    "exclude": [],
+    "include": [],
+    "entrypoint": "server.ts"
+  },
+  "imports": {
+    "grammy": "https://deno.land/x/grammy@v1.19.2/mod.ts",
+    "std": "https://deno.land/std@0.208.0",
+    "std/": "https://deno.land/std@0.208.0/",
+    "langchain": "https://esm.sh/langchain@0.0.200",
+    "langchain/": "https://esm.sh/langchain@0.0.200/",
+    "astral": "https://deno.land/x/astral@0.3.2/mod.ts",
+    "html-to-text": "https://esm.sh/html-to-text@9.0.5",
+    "zod": "https://deno.land/x/zod@v3.22.4/mod.ts",
+    "zod-to-json-schema": "https://esm.sh/zod-to-json-schema@3.20.3",
+    "rss": "https://deno.land/x/rss@1.0.0/mod.ts"
+  },
+  "tasks": {
+    "run": "deno run --unstable --allow-net --allow-read --allow-run --allow-env --allow-write --watch server.ts"
+  },
+  "compilerOptions": {
+    "lib": ["deno.window", "dom"]
+  }
+}
