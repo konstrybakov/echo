@@ -6,6 +6,7 @@ import { pragmaticEngineerChain } from './company-chains/pragmatic-engineer.ts'
 import { zapierChain } from './company-chains/zapier.ts'
 import { createJobMessage } from './messaging/create-job-message.ts'
 import { memoriselyChain } from "~/job-search/company-chains/memorisely.ts";
+import { spliceChain } from "~/job-search/company-chains/splice.ts";
 
 export const checkJobs = async () => {
   log.info('Checking jobs')
@@ -15,7 +16,8 @@ export const checkJobs = async () => {
     pragmaticEngineerChain,
     bufferChain,
     zapierChain,
-    memoriselyChain
+    memoriselyChain,
+    spliceChain
   ]
 
   for (const company of companies) {
