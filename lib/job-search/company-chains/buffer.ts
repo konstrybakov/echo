@@ -7,7 +7,7 @@ import { CompanyData } from '../types.ts'
 const COMPANY_NAME = 'Buffer'
 const JOBS_URL = 'https://embed.homerun.co/pelftkzqkjmhs0h1kzef/widget-en.html'
 
-export const bufferChain = async (): Promise<CompanyData> => {
+export const companyChain = async (): Promise<CompanyData> => {
   try {
     const html = await urlHTMLReader(JOBS_URL)
     const jobsText = htmlToText(html)

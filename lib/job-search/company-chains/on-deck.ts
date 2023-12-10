@@ -1,17 +1,17 @@
 import { log } from '~/log.ts'
 import { jobsToJSON } from '~/job-search/llm/jobs-to-json-chain.ts'
-import { RSSReader } from '~/job-search/readers/rss-reader.ts'
-import { pickProperties } from '~/job-search/transformers/pick-properties.ts'
+import { urlHTMLReader } from '~/job-search/readers/url-html.ts'
+import { htmlToText } from '~/job-search/transformers/html-to-text.ts'
 import { CompanyData } from '~/job-search/types.ts'
 
-const COMPANY_NAME = 'Zapier'
-const JOBS_URL = 'https://zapier.com/jobs/feeds/latest/'
+const COMPANY_NAME = 'On Deck'
+const JOBS_URL = 'https://www.beondeck.com/careers-at-on-deck'
 
 export const companyChain = async (): Promise<CompanyData> => {
   try {
-    const jobsEntries = await RSSReader(JOBS_URL)
-    const jobsJson = pickProperties(jobsEntries, ['title', 'links'])
-    const jobs = await jobsToJSON(JSON.stringify(jobsJson, null, 2))
+    const html = await urlHTMLReader(JOBS_URL, '#roles')
+    const jobsText = htmlToText(html)
+    const jobs = await jobsToJSON(jobsText)
 
     return {
       success: true,

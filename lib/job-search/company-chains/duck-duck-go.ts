@@ -6,7 +6,7 @@ import { jobsToJSON } from '~/job-search/llm/jobs-to-json-chain.ts'
 const COMPANY_NAME = 'DuckDuckGo'
 const JOBS_URL = 'https://duckduckgo.com/jobs.js'
 
-export const duckDuckGoChain = async (): Promise<CompanyData> => {
+export const companyChain = async (): Promise<CompanyData> => {
   try {
     const json = await fetch(JOBS_URL).then(res => res.json())
     const jobsJSON = pickProperties(json.offers, [

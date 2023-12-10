@@ -8,7 +8,7 @@ const COMPANY_NAME = 'Pragmatic Engineer'
 const BASE_URL = 'https://pragmatic-engineer.pallet.com'
 const JOBS_URL = `${BASE_URL}/jobs`
 
-export const pragmaticEngineerChain = async (): Promise<CompanyData> => {
+export const companyChain = async (): Promise<CompanyData> => {
   try {
     const html = await pageHTMLReader(JOBS_URL, () => {
       const divs = document.querySelectorAll('div')

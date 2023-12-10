@@ -7,7 +7,7 @@ import { jobsToJSON } from "~/job-search/llm/jobs-to-json-chain.ts";
 const COMPANY_NAME = 'Memorisely'
 const JOBS_URL = 'https://www.memorisely.com/our-story'
 
-export const memoriselyChain = async (): Promise<CompanyData> => {
+export const companyChain = async (): Promise<CompanyData> => {
   try {
     const html = await urlHTMLReader(JOBS_URL, 'div.job-options')
     const jobsText = htmlToText(html)

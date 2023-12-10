@@ -44,6 +44,10 @@ export const createJobMessage = (companyData: CompanyData): string => {
       message.push(`[${markedTitle}](${job.url})`)
     }
 
+    if (job.company) {
+      message.push(`${sanitize(`Company: ${job.company}`)}`)
+    }
+
     if (job.description) {
       message.push(sanitize(job.description))
     }

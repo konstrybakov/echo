@@ -8,7 +8,7 @@ const COMPANY_NAME = 'Splice'
 const BASE_URL = 'https://boards.greenhouse.io'
 const JOBS_URL = 'https://boards.greenhouse.io/splice'
 
-export const spliceChain = async (): Promise<CompanyData> => {
+export const companyChain = async (): Promise<CompanyData> => {
   try {
     const html = await urlHTMLReader(JOBS_URL, 'div#main')
     const jobsText = htmlToText(html, BASE_URL)

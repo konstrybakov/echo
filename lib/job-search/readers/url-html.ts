@@ -1,6 +1,6 @@
 import { DOMParser } from 'deno-dom'
 
-export const urlHTMLReader = async (url: string, selector: string): Promise<string> => {
+export const urlHTMLReader = async (url: string, selector?: string): Promise<string> => {
   const text = await fetch(url).then(res => res.text())
 
   if (!selector) {

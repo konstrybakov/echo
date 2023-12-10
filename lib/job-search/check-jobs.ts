@@ -1,28 +1,27 @@
-import { sendMessage } from '../echobot/send-message.ts'
-import { log } from '../log.ts'
-import { duckDuckGoChain } from './company-chains/duck-duck-go.ts'
-import { bufferChain } from './company-chains/buffer.ts'
-import { pragmaticEngineerChain } from './company-chains/pragmatic-engineer.ts'
-import { zapierChain } from './company-chains/zapier.ts'
-import { createJobMessage } from './messaging/create-job-message.ts'
-import { memoriselyChain } from "~/job-search/company-chains/memorisely.ts";
-import { spliceChain } from "~/job-search/company-chains/splice.ts";
+import { ulid } from 'ulid'
 
-export const checkJobs = async () => {
-  log.info('Checking jobs')
+import { companyCount, companyNames } from '~/job-search/chain-map.ts'
+import { enqueue } from '~/queue/enqueue.ts'
+import { QueueJobType } from '~/queue/types.ts'
 
-  const companies = [
-    duckDuckGoChain,
-    pragmaticEngineerChain,
-    bufferChain,
-    zapierChain,
-    memoriselyChain,
-    spliceChain
-  ]
+const HOUR = 1000 * 60 * 10
 
-  for (const company of companies) {
-    const job = await company()
+export const checkJobs = () => {
+  const delay = HOUR / companyCount
+  let index = 0
 
-    await sendMessage(createJobMessage(job))
+  for (const company of companyNames) {
+    enqueue(
+      {
+        id: ulid(),
+        type: QueueJobType.CheckJob,
+        data: {
+          companyName: company
+        }
+      },
+      delay * index
+    )
+
+    index++
   }
 }

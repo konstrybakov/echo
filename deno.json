@@ -17,6 +17,7 @@
     "zod-to-json-schema": "https://esm.sh/zod-to-json-schema@3.20.3",
     "rss": "https://deno.land/x/rss@1.0.0/mod.ts",
     "deno-dom": "https://deno.land/x/deno_dom@v0.1.43/deno-dom-wasm.ts",
+    "ulid": "https://deno.land/x/ulid@v0.3.0/mod.ts",
     "~/": "./lib/"
   },
   "tasks": {
