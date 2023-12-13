@@ -10,8 +10,11 @@ const mode = Deno.env.get('MODE')
 await listenQueue()
 
 if (mode === 'server') {
-  Deno.serve(async () => {
-    await checkJobs()
+  Deno.serve(req => {
+    const url = new URL(req.url)
+    const companies = url.searchParams.get('company')?.split(',')
+
+    checkJobs(companies)
 
     return new Response('Hello world')
   })

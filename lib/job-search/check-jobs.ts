@@ -4,13 +4,17 @@ import { companyCount, companyNames } from '~/job-search/chain-map.ts'
 import { enqueue } from '~/queue/enqueue.ts'
 import { QueueJobType } from '~/queue/types.ts'
 
-const HOUR = 1000 * 60 * 10
+const HOUR = 1000 * 60 * 60
 
-export const checkJobs = () => {
+export const checkJobs = (companies?: string[]) => {
   const delay = HOUR / companyCount
   let index = 0
 
-  for (const company of companyNames) {
+  const companiesToCheck = companies
+    ? companyNames.filter(company => companies.includes(company.toLowerCase()))
+    : companyNames
+
+  for (const company of companiesToCheck) {
     enqueue(
       {
         id: ulid(),
