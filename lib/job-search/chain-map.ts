@@ -9,6 +9,7 @@ export const companyChainMap = {
   Hotjar: () => import('~/job-search/company-chains/hotjar.ts'),
   HelpScout: () => import('~/job-search/company-chains/helpscout.ts'),
   Deno: () => import('~/job-search/company-chains/deno.ts'),
+  Fingerprint: () => import('~/job-search/company-chains/fingerprint.ts'),
 }
 
 export type CompanyName = keyof typeof companyChainMap

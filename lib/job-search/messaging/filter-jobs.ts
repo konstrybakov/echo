@@ -9,7 +9,7 @@ const FILTER = [
   'scientist',
   'general interest form',
   'director',
-  'specialist'
+  'president'
 ]
 
 export const filterJobs = (jobs: Job[]): Job[] => {
