@@ -8,6 +8,7 @@ export const companyChainMap = {
   OnDeck: () => import('~/job-search/company-chains/on-deck.ts'),
   Hotjar: () => import('~/job-search/company-chains/hotjar.ts'),
   HelpScout: () => import('~/job-search/company-chains/helpscout.ts'),
+  Deno: () => import('~/job-search/company-chains/deno.ts'),
 }
 
 export type CompanyName = keyof typeof companyChainMap

@@ -1,5 +1,4 @@
 import { LaunchOptions, launch } from 'astral'
-import { cleanHTML } from "~/job-search/readers/util-clean-html.ts";
 
 export const pageHTMLReader = async (
   url: string,
@@ -33,9 +32,32 @@ export const pageHTMLReader = async (
         throw new Error(`Could not find parent element: ${parentSelector}`)
       }
 
-      const cleanParent = cleanHTML(parent)
+      const tagsToRemove = [
+        'script',
+        'style',
+        'svg',
+        'img',
+        'iframe',
+        'noscript',
+        'link',
+        'next-route-announcer'
+      ]
 
-      return cleanParent.innerHTML
+      tagsToRemove.forEach(tag => {
+        const elements = parent.querySelectorAll(tag)
+
+        elements.forEach(element => {
+          element.remove()
+        })
+      })
+
+      parent.querySelectorAll('div').forEach(div => {
+        if (div.textContent === '') {
+          div.remove()
+        }
+      })
+
+      return parent.innerHTML
     },
     { args: [parentSelector] }
   )
