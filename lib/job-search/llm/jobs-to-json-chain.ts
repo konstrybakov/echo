@@ -35,4 +35,4 @@ const outputParser = new JsonOutputFunctionsParser()
 const jobsToJSONChain = prompt.pipe(functionCallingModel).pipe(outputParser)
 
 export const jobsToJSON = (jobs: string): Promise<JobCollection> =>
-  jobsToJSONChain.invoke({ jobs })
+  jobsToJSONChain.invoke({ jobs }) as Promise<JobCollection>

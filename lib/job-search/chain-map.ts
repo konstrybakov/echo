@@ -6,7 +6,8 @@ export const companyChainMap = {
   Memorisely: () => import('~/job-search/company-chains/memorisely.ts'),
   Splice: () => import('~/job-search/company-chains/splice.ts'),
   OnDeck: () => import('~/job-search/company-chains/on-deck.ts'),
-  Hotjar: () => import('~/job-search/company-chains/hotjar.ts')
+  Hotjar: () => import('~/job-search/company-chains/hotjar.ts'),
+  HelpScout: () => import('~/job-search/company-chains/helpscout.ts'),
 }
 
 export type CompanyName = keyof typeof companyChainMap
