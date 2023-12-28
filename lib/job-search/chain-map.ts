@@ -10,6 +10,11 @@ export const companyChainMap = {
   HelpScout: () => import('~/job-search/company-chains/helpscout.ts'),
   Deno: () => import('~/job-search/company-chains/deno.ts'),
   Fingerprint: () => import('~/job-search/company-chains/fingerprint.ts'),
+  Pitch: () => import('~/job-search/company-chains/pitch.ts'),
+  Pipe: () => import('~/job-search/company-chains/pipe.ts'),
+  Loom: () => import('~/job-search/company-chains/loom.ts'),
+  TheBrowserCompany: () => import('~/job-search/company-chains/the-browser-company.ts'),
+  Tines: () => import('~/job-search/company-chains/tines.ts'),
 }
 
 export type CompanyName = keyof typeof companyChainMap
