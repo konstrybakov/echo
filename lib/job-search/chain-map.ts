@@ -15,6 +15,7 @@ export const companyChainMap = {
   Loom: () => import('~/job-search/company-chains/loom.ts'),
   TheBrowserCompany: () => import('~/job-search/company-chains/the-browser-company.ts'),
   Tines: () => import('~/job-search/company-chains/tines.ts'),
+  Honeybadger: () => import('~/job-search/company-chains/honeybadger.ts'),
 }
 
 export type CompanyName = keyof typeof companyChainMap

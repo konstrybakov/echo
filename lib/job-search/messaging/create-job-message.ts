@@ -63,5 +63,8 @@ export const createJobMessage = (companyData: CompanyData): string => {
     message.push('')
   }
 
+  message.push('')
+  message.push(`Total jobs: ${companyData.jobs.length}`)
+
   return message.join('\n')
 }
