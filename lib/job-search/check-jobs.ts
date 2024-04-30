@@ -7,7 +7,7 @@ import { QueueJobType } from '~/queue/types.ts'
 const HOUR = 1000 * 60 * 60
 
 export const checkJobs = (companies?: string[]) => {
-  const delay = HOUR / companyCount
+  const delay = HOUR / 4 / companyCount
   let index = 0
 
   const companiesToCheck = companies
