@@ -16,6 +16,7 @@ export const companyChain = async (): Promise<CompanyData> => {
       'salary',
       'title'
     ])
+
     const jobs = await jobsToJSON(JSON.stringify(jobsJSON, null, 2))
 
     return {
